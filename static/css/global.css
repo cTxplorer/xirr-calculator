@@ -1,0 +1,38 @@
+.fold {
+  @apply w-full max-w-screen-lg px-4 mx-auto flex flex-row;
+}
+
+.sidebar {
+  @apply hidden md:block md:w-3/12;
+}
+
+.content {
+  @apply w-full md:w-9/12;
+}
+
+.btn {
+  @apply font-bold py-2 px-4 rounded cursor-pointer;
+}
+.btn-blue {
+  @apply bg-blue-500 text-white;
+}
+.btn-blue:hover {
+  @apply bg-blue-600;
+}
+.btn-hover-big {
+  @apply transition duration-500 ease-in-out;
+}
+
+.link {
+  @apply text-blue-700;
+}
+.link:hover {
+  @apply text-blue-900;
+}
+
+.dropzone {
+  @apply border-2 border-dashed border-blue-500 rounded w-full h-64 flex flex-col justify-center items-center cursor-pointer;
+}
+.dropzone:hover {
+  @apply border-solid;
+}
