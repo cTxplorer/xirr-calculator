@@ -8,6 +8,7 @@
     "build": "next build",
     "start": "next start",
     "export": "next export",
+    "build-and-export": "rm -f public/service-worker.js && next build && next export",
     "deploy": "rm -f public/service-worker.js && next build && next export && netlify deploy --dir out",
     "deploy-prod": "rm -f public/service-worker.js && next build && next export && netlify deploy --prod --dir out"
   },
