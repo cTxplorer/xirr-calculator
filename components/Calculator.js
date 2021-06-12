@@ -1,18 +1,11 @@
 import { useCallback, useState, useRef } from 'react';
+import Alert from './atoms/Alert';
+import FileItem from './atoms/FileItem';
+import InputSection from './atoms/InputSection';
 import parseCsvFiles from '../utils/parseCsvFiles';
 import getCashflow from '../utils/getCashflow';
 import calculateXIRR from '../utils/calculateXIRR';
 import validateTrades from '../utils/validateTrades';
-
-function Alert({ visible, success, children }) {
-  return (
-    <div className={`${visible ? 'max-h-full' : 'hidden max-h-0'} text-white px-6 py-4 border-0 rounded relative mb-4 ${success ? 'bg-green-500' : 'bg-red-400'}`}>
-      <span className="inline-block align-middle mr-8">
-        {children}
-      </span>
-    </div>
-  );
-}
 
 const errorMap = {
   CURRENT_VALUE_REQUIRED: 'Portfolio value must be provided. If you don\'t have any holdings, enter 0',
@@ -118,16 +111,50 @@ export default function Calculator({ id }) {
     updateIsCalculating(false);
   }, [csvFiles]);
 
+  const removeCsvFile = useCallback((fileToDelete) => {
+    updateCsvFiles(csvFiles => csvFiles.filter(file => file.name !== fileToDelete.name));
+    fileInputRef.current.value = '';
+  }, [updateCsvFiles]);
+
+  const resetValues = useCallback(() => {
+    updateErr({});
+    updateCsvFiles([]);
+    valuationInputRef.current.value = '';
+    fileInputRef.current.value = '';
+    updateIsCalculating(false);
+    updateXirr(null);
+  }, [updateErr, updateCsvFiles, updateIsCalculating, valuationInputRef, updateXirr])
+
   return (
     <form id={id}>
       {/* start: file upload */}
-      <div className="mb-8">
-        <label htmlFor="trades">
-          <div className="text-gray-500 text-xs">STEP 1</div>
-          <div className={`text-lg mb-2 ${err.tradeFileErr?.isError ? 'text-red-600' : ''}`}>
-            Upload tradebook files from Zerodha console
-          </div>
-        </label>
+      <InputSection
+        title="Upload tradebook files from Zerodha console"
+        titleClassName={err.tradeFileErr?.isError ? 'text-red-600' : ''}
+        subtite="STEP 1"
+        helpTextJsx={
+          csvFiles.length ? (
+            <div className="flex items-stretch flex-wrap">
+              {
+                csvFiles.map((file, index) => (
+                  <FileItem
+                    name={file.name}
+                    deleteHandler={() => removeCsvFile(file)}
+                    key={index}
+                  />
+                ))
+              }
+            </div>
+          ) : (
+            <>
+              Learn: How to <em>download tradebook</em> in Zerodha?
+            </>
+          )
+        }
+        helpLink={
+          csvFiles.length ? null : "https://www.notion.so/How-to-download-trade-book-from-Zerodha-20c0066df2cb484b9c65df4a723f16d9"
+        }
+      >
         <input
           type="file"
           accept=".csv"
@@ -142,29 +169,28 @@ export default function Calculator({ id }) {
           onDrop={onDropHandler}
           onDragOver={dragOverHandler}
           onClick={()=>{fileInputRef.current.click()}}
+          role="button"
+          onKeyPress={()=>{fileInputRef.current.click()}}
         >
           <img height="52" src="../static/images/file-upload.svg" className="mb-4" />
           <span className="text-center">drag and drop here or click to browse</span>
           <span className="text-center">(supports csv file)</span>
         </div>
-
-        <a
-          className="block text-xs link w-max"
-          href="https://www.notion.so/How-to-download-trade-book-from-Zerodha-20c0066df2cb484b9c65df4a723f16d9"
-        >
-          Learn: How to <em>download tradebook</em> in Zerodha?
-        </a>
-      </div>
+      </InputSection>
       {/* end: file upload */}
 
       {/* start: current valuation */}
-      <div className="mb-8">
-        <label htmlFor="current_val">
-          <div className="text-gray-500 text-xs">STEP 2</div>
-          <div className={`text-lg mb-2 ${err.currentValuationErr?.isError ? 'text-red-600' : ''}`}>
-            Enter current portfolio value
-          </div>
-        </label>
+      <InputSection
+        title="Enter current portfolio value"
+        titleClassName={err.currentValuationErr?.isError ? 'text-red-600' : ''}
+        subtite="STEP 2"
+        helpTextJsx={(
+          <>
+            Learn: How to <em>find current portfolio value</em> in Zerodha?
+          </>
+        )}
+        helpLink="https://www.notion.so/How-to-find-current-portfolio-value-in-Zerodha-e0d418a86fde4e6a805c180eeada9810"
+      >
         <input
           type="number"
           placeholder="Rs."
@@ -173,14 +199,7 @@ export default function Calculator({ id }) {
           required={true}
           className="appearance-none border-2 border-gray-200 rounded w-full max-w-md py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500 mb-4"
         />
-
-        <a
-          className="block text-xs link w-max"
-          href="https://www.notion.so/How-to-find-current-portfolio-value-in-Zerodha-e0d418a86fde4e6a805c180eeada9810"
-        >
-          Learn: How to <em>find current portfolio value</em> in Zerodha?
-        </a>
-      </div>
+      </InputSection>
       {/* end: current valuation */}
 
       {/* start: find xirr button */}
@@ -193,13 +212,26 @@ export default function Calculator({ id }) {
       />
       {/* end: find xirr button */}
 
+      {/* start: reset button */}
+      {
+        (csvFiles.length || valuationInputRef?.current?.value) && (
+          <input
+            type="button"
+            value="Reset"
+            className={`btn btn-blue btn-ghost mb-8 ml-4`}
+            onClick={resetValues}
+          />
+        )
+      }
+      {/* end: reset button */}
+
       {err.tradeFileErr?.isWarn && (
         <Alert visible={true}>
           {err.tradeFileErr.msg}
         </Alert>
       )}
 
-      {xirr && (
+      {xirr && !isNaN(xirr) && (
         <Alert visible={true} success={true}>
           {`Your portfolio has XIRR of ${xirr}%`}
         </Alert>

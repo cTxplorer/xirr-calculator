@@ -19,9 +19,13 @@
 .btn-blue:hover {
   @apply bg-blue-600;
 }
-.btn-hover-big {
-  @apply transition duration-500 ease-in-out;
+.btn-ghost.btn-blue {
+  @apply bg-transparent text-blue-500;
 }
+.btn-ghost.btn-blue:hover {
+  @apply bg-transparent;
+}
+
 
 .link {
   @apply text-blue-700;
@@ -31,8 +35,8 @@
 }
 
 .dropzone {
-  @apply border-2 border-dashed border-blue-500 rounded w-full h-64 flex flex-col justify-center items-center cursor-pointer;
+  @apply border-2 border-dashed border-gray-500 rounded w-full h-64 flex flex-col justify-center items-center cursor-pointer;
 }
 .dropzone:hover {
-  @apply border-solid;
+  @apply border-blue-500;
 }

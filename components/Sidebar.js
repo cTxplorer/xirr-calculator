@@ -6,7 +6,7 @@ export default function Sidebar() {
           <a href="#calculator">Calculator</a>
         </li>
         <li className="mb-2">
-          <a href="#about">WTH is XIRR!</a>
+          <a href="#xirr">WTH is XIRR!</a>
         </li>
         {/* <li className="mb-2">
           <a href="#faq">FAQ</a>
