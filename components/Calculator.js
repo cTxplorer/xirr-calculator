@@ -152,7 +152,7 @@ export default function Calculator({ id }) {
           )
         }
         helpLink={
-          csvFiles.length ? null : "https://www.notion.so/How-to-download-trade-book-from-Zerodha-20c0066df2cb484b9c65df4a723f16d9"
+          csvFiles.length ? null : "https://bit.ly/download-kite-trades"
         }
       >
         <input
@@ -189,7 +189,7 @@ export default function Calculator({ id }) {
             Learn: How to <em>find current portfolio value</em> in Zerodha?
           </>
         )}
-        helpLink="https://www.notion.so/How-to-find-current-portfolio-value-in-Zerodha-e0d418a86fde4e6a805c180eeada9810"
+        helpLink="https://bit.ly/find-current-valuation"
       >
         <input
           type="number"
@@ -224,6 +224,10 @@ export default function Calculator({ id }) {
         )
       }
       {/* end: reset button */}
+
+      <div className="text-xs md:hidden">
+        It's secure: all your trades data is processed within the browser.
+      </div>
 
       {err.tradeFileErr?.isWarn && (
         <Alert visible={true}>

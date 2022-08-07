@@ -18,6 +18,12 @@ export default function Sidebar() {
           ))
         }
       </ul>
+      <div
+        className="sticky text-xs pr-6"
+        style={{top: "calc(100% - 64px)"}}
+      >
+        All your trades data is processed within the browser.
+      </div>
     </nav>
   );
 }

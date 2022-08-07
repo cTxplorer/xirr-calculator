@@ -23,6 +23,7 @@ export default function InputSection({
           <a
             className="block text-xs link w-max"
             href={helpLink}
+            target="_blank"
             rel="noopener noreferrer"
           >
             {helpTextJsx}
