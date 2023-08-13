@@ -13,7 +13,7 @@ export default class MyDocument extends Document {
           <link rel="manifest" href="static/manifest.json" />
           <link rel="shortcut icon" href="/static/favicons/favicon.ico"></link>
 
-          <link rel="canonical" href="http://xirr.pgxplorer.dev"></link>
+          <link rel="canonical" href="https://xirr.pgxplorer.dev"></link>
           <link rel="apple-touch-icon" sizes="180x180" href="/static/favicons/apple-touch-icon.png" />
           <link rel="icon" type="image/png" sizes="32x32" href="/static/favicons/favicon-32x32.png" />
           <link rel="icon" type="image/png" sizes="16x16" href="/static/favicons/favicon-16x16.png" />
@@ -30,20 +30,20 @@ export default class MyDocument extends Document {
 
           {/* Primary Meta Tags */}
           <meta name="title" content="XIRR Calculator 📈" />
-          <meta name="description" content="" />
+          <meta name="description" content="Use XIRR to calculate realistic returns for your portfolio. Upload Zerodha tradebook and find out your XIRR, securely." />
 
           {/* Open Graph / Facebook */}
           <meta property="og:type" content="website" />
-          <meta property="og:url" content="https://xirr.netlify.app/" />
+          <meta property="og:url" content="https://xirr.pgxplorer.dev" />
           <meta property="og:title" content="XIRR Calculator 📈" />
-          <meta property="og:description" content="" />
+          <meta property="og:description" content="Use XIRR to calculate realistic returns for your portfolio. Upload Zerodha tradebook and find out your XIRR, securely." />
           <meta property="og:image" content="static/images/logo.png" />
 
           {/* Twitter */}
           <meta property="twitter:card" content="summary_large_image" />
-          <meta property="twitter:url" content="https://xirr.netlify.app/" />
+          <meta property="twitter:url" content="https://xirr.pgxplorer.dev" />
           <meta property="twitter:title" content="XIRR Calculator 📈" />
-          <meta property="twitter:description" content="" />
+          <meta property="twitter:description" content="Use XIRR to calculate realistic returns for your portfolio. Upload Zerodha tradebook and find out your XIRR, securely." />
           <meta property="twitter:image" content="static/images/logo.png" />
         </Head>
         <body>
