@@ -8,9 +8,9 @@
     "build": "next build",
     "start": "next start",
     "export": "next export",
-    "build-and-export": "rm -f public/service-worker.js && next build && next export",
-    "deploy": "rm -f public/service-worker.js && next build && next export && netlify deploy --dir out",
-    "deploy-prod": "rm -f public/service-worker.js && next build && next export && netlify deploy --prod --dir out"
+    "build-and-export": "next build",
+    "deploy": "next build && netlify deploy --dir out",
+    "deploy-prod": "next build && netlify deploy --prod --dir out"
   },
   "keywords": [],
   "author": "",
@@ -18,15 +18,12 @@
   "dependencies": {
     "@tailwindcss/postcss7-compat": "2.0.4",
     "autoprefixer": "^9",
-    "fastify": "^3.1.1",
-    "fastify-compress": "^3.2.2",
-    "next": "^9.4.4",
-    "next-offline": "^5.0.2",
+    "next": "^13",
     "node-irr": "2.0.3",
     "papaparse": "5.3.0",
     "postcss": "^7",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat"
   }
 }
