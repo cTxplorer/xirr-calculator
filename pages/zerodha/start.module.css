@@ -1,0 +1,27 @@
+.pageContainer {
+  padding: var(--space-4xl);
+  background-color: var(--c-background);
+}
+
+.card {
+  min-height: calc(100vh - 2*var(--space-4xl));
+  border-radius: calc(var(--radius)*3);
+  background-color: var(--c-accent);
+  color: var(--c-accentContrasted);
+  padding: var(--space-4xl);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-2xl);
+}
+
+.title {
+  font-size: var(--text-xl);
+  color: var(--c-grey2);
+  margin-bottom: var(--space-4xl)
+}
+
+.subtext {
+  font-size: var(--text-m);
+}

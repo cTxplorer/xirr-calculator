@@ -21,4 +21,16 @@ export default function validateTrades(trades, errorMap) {
   if (!trades.filter(trade => !isToday(trade.date)).length) {
     return errorMap.SAME_DAY_TRADES;
   }
+
+  // SELL TRADE BEFORE BUY
+  const symbolsWithNonZeroBuy = new Set();
+  trades.forEach(trade => {
+    if (trade.type.toLowerCase() === 'buy') {
+      symbolsWithNonZeroBuy.add(trade.symbol);
+    }
+
+    if (trade.type.toLowerCase() === 'sell' && !symbolsWithNonZeroBuy.has(trade.symbol)) {
+      console.error(`Found sell as first trade! $${trade.symbol} with SELL on ${trade.date} with no buy trade earlier`)
+    }
+  })
 }

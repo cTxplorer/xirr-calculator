@@ -85,6 +85,7 @@ export default function Calculator({ id }) {
     }
     const trades = await parseCsvFiles(csvFiles);
     const cashflow = getCashflow[broker](trades);
+    console.table(cashflow)
     const validationError = validateTrades(cashflow, errorMap);
     if (validationError) {
       updateErr(err => ({

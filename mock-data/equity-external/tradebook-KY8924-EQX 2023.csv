@@ -1,0 +1,2 @@
+symbol,isin,trade_date,exchange,segment,series,trade_type,auction,quantity,price,trade_id,order_id,order_execution_time,expiry_date
+CONCORDBIO,,2023-08-17,UNKNOWN,EQ,EQ,buy,false,20.000000,741.000000,IPO,IPO,2023-08-17T08:44:00

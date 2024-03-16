@@ -1,0 +1,4 @@
+symbol,isin,trade_date,exchange,segment,series,trade_type,auction,quantity,price,trade_id,order_id,order_execution_time,expiry_date
+LICI,,2022-05-16,UNKNOWN,EQ,EQ,buy,false,15.000000,904.000000,IPO,IPO,2022-05-16T08:44:00
+AUBANK,,2022-06-17,UNKNOWN,EQ,EQ,buy,false,1.000000,0.000000,IPO,IPO,2022-06-17T08:44:00
+91D090323,,2022-12-08,UNKNOWN,EQ,EQ,buy,false,500.000000,98.423000,IPO,IPO,2022-12-08T08:44:00
