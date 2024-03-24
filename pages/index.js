@@ -1,10 +1,15 @@
-import { Typography } from 'antd';
+import Head from 'next/head';
 import AboutXIRR from '../components/AboutXIRR.js';
 import Calculator from '../components/Calculator.js';
 import Header from '../components/Header.js';
 import Sidebar from '../components/Sidebar.js';
 import Help from '../components/Help.js';
 import Contribute from '../components/Contribute.js';
+
+const title = 'XIRR Calculator 📈';
+const description = "Use XIRR to calculate realistic returns for your portfolio. Upload Zerodha tradebook and find out your XIRR, securely.";
+const websiteUrl = "https://xirr.pgxplorer.dev";
+const imagePath = "static/images/logo.png";
 
 const elementIdMap = {
   ABOUT_XIRR: 'xirr',
@@ -16,29 +21,54 @@ const elementIdMap = {
 
 function HomePage() {
   return (
-    <div>
-      <Header />
+    <>
+      <Head>
+        <link rel="canonical" href={websiteUrl}></link>
 
-      <main className="fold">
-        <Sidebar />
+        <title>{title}</title>
 
-        <div className="content">
+        {/* Primary Meta Tags */}
+        <meta name="title" content={title} />
+        <meta name="description" content={description} />
 
-          <Calculator />
-          <div className="mb-16" />
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={websiteUrl} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content={imagePath} />
 
-          <Help id={elementIdMap.HELP} />
-          <div className="mb-16" />
+        {/* Twitter */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content={websiteUrl} />
+        <meta property="twitter:title" content={title} />
+        <meta property="twitter:description" content={description} />
+        <meta property="twitter:image" content={imagePath} />
+      </Head>
+      <div>
+        <Header />
 
-          <AboutXIRR id={elementIdMap.ABOUT_XIRR} />
-          <div className="mb-16" />
+        <main className="fold">
+          <Sidebar />
 
-          <Contribute id={elementIdMap.CONTRIBUTE} />
-          <div className="mb-16" />
+          <div className="content">
 
-        </div>
-      </main>
-    </div>
+            <Calculator />
+            <div className="mb-16" />
+
+            <Help id={elementIdMap.HELP} />
+            <div className="mb-16" />
+
+            <AboutXIRR id={elementIdMap.ABOUT_XIRR} />
+            <div className="mb-16" />
+
+            <Contribute id={elementIdMap.CONTRIBUTE} />
+            <div className="mb-16" />
+
+          </div>
+        </main>
+      </div>
+    </>
   );
 }
 
