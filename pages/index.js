@@ -1,3 +1,4 @@
+import { Typography } from 'antd';
 import AboutXIRR from '../components/AboutXIRR.js';
 import Calculator from '../components/Calculator.js';
 import Header from '../components/Header.js';
@@ -26,10 +27,10 @@ function HomePage() {
           <Calculator />
           <div className="mb-16" />
 
-          <AboutXIRR id={elementIdMap.ABOUT_XIRR} />
+          <Help id={elementIdMap.HELP} />
           <div className="mb-16" />
 
-          <Help id={elementIdMap.HELP} />
+          <AboutXIRR id={elementIdMap.ABOUT_XIRR} />
           <div className="mb-16" />
 
           <Contribute id={elementIdMap.CONTRIBUTE} />

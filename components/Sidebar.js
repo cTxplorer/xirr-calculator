@@ -1,8 +1,8 @@
 export default function Sidebar() {
   const items = [
-    { name: 'Calculator', href: 'calculator' },
+    { name: 'Zerodha Tradebook', href: 'calculator' },
+    { name: 'Online Calculator', href: 'help' },
     { name: 'What is XIRR?', href: 'xirr' },
-    { name: 'Help', href: 'help' },
     { name: 'Contribute', href: 'contribute' },
   ]
   return (
@@ -11,7 +11,7 @@ export default function Sidebar() {
         {
           items.map(item => (
             <li className="mb-4" key={item.href}>
-              <a href={`#${item.href}`} className="px-3 py-2 rounded-full hover:bg-gray-100">
+              <a href={`#${ item.href }`} className="px-3 py-2 rounded-full hover:bg-gray-100">
                 {item.name}
               </a>
             </li>
@@ -20,7 +20,7 @@ export default function Sidebar() {
       </ul>
       <div
         className="sticky text-xs pr-6"
-        style={{top: "calc(100% - 64px)"}}
+        style={{ top: "calc(100% - 64px)" }}
       >
         All your trades data is processed within the browser.
       </div>
