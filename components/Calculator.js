@@ -26,7 +26,7 @@ export default function Calculator({ id }) {
   const valuationInputRef = useRef(null);
 
   // removes duplicate files in uploaded/dropped files
-  const processFileSubmit =  useCallback((files) => {
+  const processFileSubmit = useCallback((files) => {
     const _csvFiles = [...csvFiles];
     files.forEach(newFile => {
       const searchIndex = csvFiles.findIndex(existingFile => existingFile.name === newFile.name);
@@ -98,7 +98,7 @@ export default function Calculator({ id }) {
       return;
     }
     const xirr = calculateXIRR(cashflow, parseInt(currentValuation, 10));
-    if(isNaN(xirr)) {
+    if (isNaN(xirr)) {
       updateErr(err => ({
         ...err,
         tradeFileErr: {
@@ -127,6 +127,9 @@ export default function Calculator({ id }) {
 
   return (
     <form id={id}>
+      <h2 className="uppercase font-bold text-xl text-gray-700 mb-4 leading-4">
+        Calculate using Zerodha tradebooks
+      </h2>
       {/* start: file upload */}
       <InputSection
         title="Upload tradebook files from Zerodha console"
@@ -168,9 +171,9 @@ export default function Calculator({ id }) {
           tabIndex="0"
           onDrop={onDropHandler}
           onDragOver={dragOverHandler}
-          onClick={()=>{fileInputRef.current.click()}}
+          onClick={() => { fileInputRef.current.click() }}
           role="button"
-          onKeyPress={()=>{fileInputRef.current.click()}}
+          onKeyPress={() => { fileInputRef.current.click() }}
         >
           <img height="52" src="../static/images/file-upload.svg" className="mb-4" />
           <span className="text-center">drag and drop here or click to browse</span>
@@ -206,7 +209,7 @@ export default function Calculator({ id }) {
       <input
         type="button"
         value="Calculate XIRR"
-        className={`btn btn-blue mb-8 ${isCalculating ? 'opacity-30' : ''}`}
+        className={`btn btn-blue mb-8 ${ isCalculating ? 'opacity-30' : '' }`}
         onClick={isCalculating ? null : _calculateXIRR}
         disabled={isCalculating}
       />
@@ -237,7 +240,7 @@ export default function Calculator({ id }) {
 
       {xirr && !isNaN(xirr) && (
         <Alert visible={true} success={true}>
-          {`Your portfolio has XIRR of ${xirr}%`}
+          {`Your portfolio has XIRR of ${ xirr }%`}
         </Alert>
       )}
     </form>

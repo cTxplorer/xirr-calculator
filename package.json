@@ -16,7 +16,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@ant-design/cssinjs": "1.18.4",
     "@tailwindcss/postcss7-compat": "2.0.4",
+    "antd": "5.15.2",
     "autoprefixer": "^9",
     "next": "^13",
     "node-irr": "2.0.3",

@@ -2,6 +2,7 @@ import Head from 'next/head';
 
 import 'tailwindcss/tailwind.css';
 import '../static/css/global.css';
+import '../static/css/global-new.css';
 
 function MyApp({ Component, pageProps }) {
   return (
